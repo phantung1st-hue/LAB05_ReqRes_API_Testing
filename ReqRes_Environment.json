@@ -1,0 +1,34 @@
+{
+	"id": "1a3bb95f-7434-4067-bc77-a83ecd6404d0",
+	"name": "2474802010537_PhanThanhTung_Env",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "userld",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "api-key",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-10-22T09:37:34.120Z",
+	"_postman_exported_using": "Postman/12.33.3-261022-0328"
+}
