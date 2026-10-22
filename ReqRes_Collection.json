@@ -17,17 +17,31 @@
               "listen": "test",
               "script": {
                 "exec": [
+                  "",
                   "pm.test(\"Status code is 201\", function () {",
                   "    pm.response.to.have.status(201);",
                   "});",
                   "",
-                  "pm.test(\"Name and Job are correct\", function () {",
+                  "pm.test(\"Name and Job match CSV data\", function () {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.name).to.eql(\"An Nguyen\");",
-                  "    pm.expect(jsonData.job).to.eql(\"QA Lead\");",
+                  "",
+                  "    pm.expect(jsonData.name).to.eql(",
+                  "        pm.iterationData.get(\"name\")",
+                  "    );",
+                  "",
+                  "    pm.expect(jsonData.job).to.eql(",
+                  "        pm.iterationData.get(\"job\")",
+                  "    );",
                   "});",
                   "",
-                  "pm.environment.set(\"userId\", pm.response.json().id);"
+                  "pm.test(\"Save User ID\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "",
+                  "    pm.expect(jsonData.id).to.exist;",
+                  "",
+                  "    pm.environment.set(\"userId\", jsonData.id);",
+                  "});",
+                  ""
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -46,7 +60,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"An Nguyen\",\n    \"job\": \"QA Lead\"\n}",
+              "raw": "\n{\n    \"name\": \"{{name}}\",\n    \"job\": \"{{job}}\"\n}\n",
               "options": {
                 "raw": {
                   "language": "json"
