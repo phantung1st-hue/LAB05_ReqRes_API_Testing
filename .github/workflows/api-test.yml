@@ -26,7 +26,14 @@ jobs:
         env:
           REQRES_API_KEY: ${{ secrets.REQRES_API_KEY }}
         run: |
+          
+      - name: Run API Tests
+        env:
+          REQRES_API_KEY: ${{ secrets.REQRES_API_KEY }}
+        run: |
           newman run ReqRes_Collection.json \
             -e ReqRes_Environment.json \
             -d users.csv \
+            --env-var "baseUrl=https://reqres.in" \
             --env-var "api-key=$REQRES_API_KEY"
+
